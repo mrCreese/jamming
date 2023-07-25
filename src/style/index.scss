@@ -1,0 +1,77 @@
+@import './variables/variables';
+@import 'C:/Users/plisa.oleksandr/Documents/UTILITY/Spak-scss/spak';
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+ 
+}
+body {
+  background-image: url("../../public/img/sound.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+
+
+
+
+.header {
+  background: rgb(12,0,36);
+background: linear-gradient(90deg, rgba(12,0,36,1) 0%, rgba(84,9,121,1) 35%, rgba(192,0,255,1) 100%);
+  color: $primary-text;
+  span {
+    color: $secondary-text;
+  }
+}
+
+
+.btn{
+  border-radius: 15px;
+}
+.track{
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  font-size: 0.8rem;
+}
+.image_container{
+
+  width: 100px !important;
+  height: 100px !important;
+  img{
+  
+    border: 1px solid red;
+  }
+}
+
+
+  .pagination-link.is-current {
+    background-color: $primary;
+    border-color:$primary;
+    color: #fff;
+  }
+
+  .pagination-link, .pagination-next, .pagination-previous {
+    color: #fff;
+  }
+  .tracklist_container{
+    background-color: rgb(75, 73, 71, 0.4);
+    border-radius: 12px;
+    
+  }
+   .track_container{
+    background-image: url("../../public/img/sound.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 100vh;
+  } 
+  .my_container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .add{
+    cursor: pointer;
+  }
