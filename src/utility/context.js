@@ -33,8 +33,12 @@ const AppProvider = ({ children }) => {
     setSearchValue(e.target.value);
   };
   const addToPlaylist = (track) => {
-    const temp = [...playlist, track];
-    setPlaylist(temp);
+    const exist = playlist.filter((item) => item.id === track.id);
+    console.log(exist);
+    if (exist.length < 1) {
+      const temp = [...playlist, track];
+      setPlaylist(temp);
+    }
   };
 
   const handleSearchValue = async () => {

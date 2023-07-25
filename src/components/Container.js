@@ -4,20 +4,17 @@ import Tracklist from "./Tracklist";
 import { useGlobalContext } from "../utility/context";
 
 const Container = () => {
-  const {
-    displayitems,
-
-    data,
-    playlist,
-  } = useGlobalContext();
+  const { displayitems, data, playlist } = useGlobalContext();
   return (
     <div className="my_container f-col track_container p-6">
       <SearchBar />
-      <div className="w-100">
-        {data.length && (
-          <Tracklist title={"Results"} items={displayitems} pagination={true} />
+      <div className="container-flex between w-100">
+        {data.length > 0 && (
+          <Tracklist title={"Results"} items={displayitems} btn={true} />
         )}
-        {playlist.length && <Tracklist title={"Playlist"} />}
+        {playlist.length > 0 && (
+          <Tracklist title={"Playlist"} items={playlist} btn={false} />
+        )}
       </div>
     </div>
   );

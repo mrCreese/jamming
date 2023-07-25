@@ -5,7 +5,7 @@ const Track = ({ track, btn }) => {
   const { addToPlaylist } = useGlobalContext();
   const { title, album, artist } = track;
   return (
-    <div className="container-center track w-50 gap-10 ">
+    <div className="container-center track w-100 gap-10 ">
       <div className="image_container container-center">
         <img
           src={`${album.cover ? album.cover : "./img/vynil.jpg"}`}

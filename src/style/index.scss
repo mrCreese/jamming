@@ -58,8 +58,10 @@ background: linear-gradient(90deg, rgba(12,0,36,1) 0%, rgba(84,9,121,1) 35%, rgb
   .tracklist_container{
     background-color: rgb(75, 73, 71, 0.4);
     border-radius: 12px;
-    
+     display: flex;
+    flex-direction: column;
   }
+
    .track_container{
     background-image: url("../../public/img/sound.jpg");
     background-size: cover;
