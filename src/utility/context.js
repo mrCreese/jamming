@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { Spotify } from "./Spotify";
 
 const AppContext = createContext();
 
@@ -6,6 +7,7 @@ const AppProvider = ({ children }) => {
   const [serchValue, setSearchValue] = useState("");
   const [data, setData] = useState([]);
   const [playlist, setPlaylist] = useState([]);
+  const [playlistName, setPlaylistName] = useState("");
   /* numero di righe per pagina */
   const [itemForPage, setItemForPage] = useState(10);
   /* pagina atuale */
@@ -17,7 +19,6 @@ const AppProvider = ({ children }) => {
     numberOfVisitedItems,
     numberOfVisitedItems + itemForPage
   );
-
   /* cambio pagina */
   const handlePageChange = (pageNumber) => {
     if (pageNumber < 1) {
@@ -29,20 +30,25 @@ const AppProvider = ({ children }) => {
     setCurrentPage(pageNumber);
   };
 
-  const handleChange = (e) => {
-    setSearchValue(e.target.value);
+  const handleChange = (e, destination) => {
+    destination(e.target.value);
   };
   const addToPlaylist = (track) => {
     const exist = playlist.filter((item) => item.id === track.id);
-    console.log(exist);
     if (exist.length < 1) {
       const temp = [...playlist, track];
       setPlaylist(temp);
     }
   };
+  const deleteFromPlaylist = (track) => {
+    const filtredPlaylist = playlist.filter((item) => item.id !== track.id);
+    setPlaylist(filtredPlaylist);
+  };
 
   const handleSearchValue = async () => {
-    const url = `https://deezerdevs-deezer.p.rapidapi.com/search?q=${serchValue}`;
+    const temp = await Spotify.search(serchValue);
+    setData(temp);
+    /*  const url = `https://deezerdevs-deezer.p.rapidapi.com/search?q=${serchValue}`;
     const options = {
       method: "GET",
       headers: {
@@ -57,7 +63,14 @@ const AppProvider = ({ children }) => {
       setData(result.data);
     } catch (error) {
       console.error(error);
-    }
+    } */
+  };
+
+  const postPlaylist = async () => {
+    const trackUri = playlist.map((track) => track.uri);
+    await Spotify.savePlaylist(playlistName, trackUri);
+    setPlaylist([]);
+    setPlaylistName("");
   };
 
   return (
@@ -69,10 +82,15 @@ const AppProvider = ({ children }) => {
         totalPages,
         currentPage,
         playlist,
+        playlistName,
+        setPlaylistName,
+        setSearchValue,
         handlePageChange,
         handleChange,
         handleSearchValue,
         addToPlaylist,
+        deleteFromPlaylist,
+        postPlaylist,
       }}
     >
       {children}

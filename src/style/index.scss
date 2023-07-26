@@ -77,3 +77,25 @@ background: linear-gradient(90deg, rgba(12,0,36,1) 0%, rgba(84,9,121,1) 35%, rgb
   .add{
     cursor: pointer;
   }
+
+  .custom-input {
+    border: none;
+    border-bottom: 1px solid #fff; /* Colore del bordo e spessore desiderato */
+    background-color: transparent;
+    outline: none; /* Rimuove l'outline di default sul focus */
+   
+    display: inline-block; /* Per adattare la larghezza dell'elemento all'input */
+  width: 100%;
+  
+  
+   input {
+    color: #fff;
+    border: none; /* Rimuove il bordo dell'input */
+    background-color: transparent; /* Imposta lo sfondo trasparente */
+    width: 100%; /* Occupa tutta la larghezza disponibile del div */
+    font-size: 16px; /* Imposta la dimensione del testo dell'input */
+  }
+  input:focus-visible{
+    outline: none;
+  }
+}

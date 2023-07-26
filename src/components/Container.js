@@ -10,10 +10,10 @@ const Container = () => {
       <SearchBar />
       <div className="container-flex between w-100">
         {data.length > 0 && (
-          <Tracklist title={"Results"} items={displayitems} btn={true} />
+          <Tracklist title={"Results"} items={displayitems} createlist={true} />
         )}
         {playlist.length > 0 && (
-          <Tracklist title={"Playlist"} items={playlist} btn={false} />
+          <Tracklist title={""} items={playlist} createlist={false} />
         )}
       </div>
     </div>

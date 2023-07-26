@@ -1,10 +1,8 @@
 import React from "react";
-import { useGlobalContext } from "../utility/context";
 
-const Button = ({ name }) => {
-  const { handleSearchValue } = useGlobalContext();
+const Button = ({ name, handleClick }) => {
   return (
-    <button className="btn" onClick={handleSearchValue}>
+    <button className="btn" onClick={handleClick}>
       {name}
     </button>
   );
